@@ -1,18 +1,4 @@
-"""
-Minimal FastAPI demo for the Razorpay AI Risk Manager (Track 02).
 
-Serves the already-trained Model B risk engine over HTTP so you have a live,
-clickable demo instead of terminal output. Trains once at startup, then
-scores transactions on request.
-
-Run:  python3 app.py
-Then open http://<your-ec2-public-ip>:8000/docs in a browser for the
-interactive Swagger UI, or hit the endpoints directly.
-
-IMPORTANT: your EC2 security group must allow inbound traffic on port 8000
-(EC2 console -> Security Groups -> Inbound rules -> Add rule -> Custom TCP,
-port 8000, source: My IP for safety, or 0.0.0.0/0 to demo from anywhere).
-"""
 
 import pandas as pd
 from fastapi import FastAPI, HTTPException

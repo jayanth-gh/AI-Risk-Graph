@@ -1,19 +1,4 @@
-"""
-AI Investigator for the Razorpay AI Risk Manager (Track 02) -- Gemini version.
 
-Same purpose as bedrock_investigator.py (turn structured risk evidence into a
-natural-language investigation summary), calling the Gemini API directly
-instead of going through AWS Bedrock.
-
-Setup:
-  1. Get a free API key from https://aistudio.google.com/apikey
-  2. On EC2: export GEMINI_API_KEY="your-key-here"
-     (don't hardcode it or commit it to git)
-  3. pip3 install google-genai
-
-If the key isn't set or the call fails, this falls back to the same
-templated summary as the Bedrock version, so the demo still works either way.
-"""
 
 import json
 import os

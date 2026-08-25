@@ -1,16 +1,4 @@
-"""
-Graph feature builder for the Razorpay AI Risk Manager (Track 02).
 
-Builds a bipartite graph per time window connecting:
-  account <-> device, account <-> ip, account <-> payment_method, account <-> promotion
-
-Then computes, for each transaction, the size of the connected component its
-account belongs to within that window -- this captures TRANSITIVE links
-(A shares a device with B, B shares an IP with C => A, B, C are one ring)
-which simple per-entity counts (Model A) cannot see.
-
-Run this AFTER feature_engineering.py has produced features_with_split.csv.
-"""
 
 import pandas as pd
 import numpy as np

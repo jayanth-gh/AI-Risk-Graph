@@ -25,7 +25,7 @@ from botocore.exceptions import ClientError
 
 # Anthropic Claude Haiku via Bedrock -- cheap, fast, good for structured summarization.
 # Swap for "amazon.titan-text-express-v1" if Claude access isn't approved yet.
-MODEL_ID = "amazon.titan-text-express-v1"  # Amazon's own model -- no separate ISV approval needed
+MODEL_ID = "amazon.nova-micro-v1:0"  # confirmed available in eu-north-1 (Stockholm)
 REGION = "eu-north-1"  # Stockholm -- match your Bedrock console region exactly
 
 
@@ -62,16 +62,14 @@ def get_investigation_summary(evidence: dict) -> dict:
     try:
         client = boto3.client("bedrock-runtime", region_name=REGION)
         body = json.dumps({
-            "inputText": build_prompt(evidence),
-            "textGenerationConfig": {
-                "maxTokenCount": 200,
-                "temperature": 0.3,
-                "topP": 0.9,
-            },
+            "messages": [
+                {"role": "user", "content": [{"text": build_prompt(evidence)}]}
+            ],
+            "inferenceConfig": {"maxTokens": 200, "temperature": 0.3},
         })
         response = client.invoke_model(modelId=MODEL_ID, body=body)
         result = json.loads(response["body"].read())
-        summary = result["results"][0]["outputText"].strip()
+        summary = result["output"]["message"]["content"][0]["text"].strip()
         return {"summary": summary, "source": "bedrock"}
     except (ClientError, Exception) as e:
         print(f"Bedrock call failed ({e}); using fallback summary.")

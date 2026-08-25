@@ -1,23 +1,4 @@
-"""
-Bedrock AI Investigator for the Razorpay AI Risk Manager (Track 02).
 
-Takes the structured evidence the risk engine ALREADY computed (risk_scoring.py)
-and asks a Bedrock model to write a natural-language investigation summary.
-Bedrock only explains evidence here -- it never independently decides
-fraud/not-fraud. That decision stays with the deterministic risk engine.
-
-Requires:
-  1. Model access enabled in the Bedrock console for the model you use below
-     (Bedrock console -> Model access -> Request/Enable, one-time per account,
-     usually instant for text models)
-  2. The EC2 instance's IAM role needs a policy allowing bedrock:InvokeModel
-     (attach to the same role you already use for Systems Manager)
-  3. pip3 install boto3
-
-If Bedrock isn't reachable (access not yet granted, network issue, etc.) this
-falls back to a plain templated summary built from the same evidence, so the
-rest of the demo still works.
-"""
 
 import json
 import boto3

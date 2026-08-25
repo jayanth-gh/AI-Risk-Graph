@@ -1,17 +1,4 @@
-"""
-Model A vs Model B comparison for the Razorpay AI Risk Manager (Track 02).
 
-Model A: behavioral features + windowed per-entity shared-resource counts
-         (accounts_per_device_48h, accounts_per_ip_48h, etc.)
-Model B: Model A features + ring_size_48h (true graph feature: connected
-         component size requiring 2+ independently shared resources)
-
-Trains both on the SAME train split, tunes threshold on the SAME val split,
-evaluates on the SAME held-out test split exactly once. This isolates the
-effect of adding the graph feature -- everything else is identical.
-
-Run this after graph_features.py has produced features_with_graph.csv.
-"""
 
 import pandas as pd
 import numpy as np

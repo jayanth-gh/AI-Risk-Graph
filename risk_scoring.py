@@ -1,18 +1,4 @@
-"""
-Risk score + evidence generator for the Razorpay AI Risk Manager (Track 02).
 
-Trains Model B (Random Forest + graph ring_size_48h) on train, then for any
-transaction produces:
-  - a 0-100 risk score (from the model's predicted probability)
-  - a risk level (LOW / MEDIUM / HIGH)
-  - a plain-language evidence list built directly from that transaction's
-    feature values -- no separate "explanation model", just formatting
-    the numbers the risk engine already computed.
-
-This is the deterministic evidence that would later be handed to Bedrock as
-structured input for a natural-language investigation summary -- Bedrock
-would explain this evidence, not decide fraud independently.
-"""
 
 import pandas as pd
 import numpy as np

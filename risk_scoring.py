@@ -101,10 +101,10 @@ def build_evidence(row):
 def score_transaction(model, row):
     X = row[MODEL_B_FEATURES].to_frame().T
     prob = model.predict_proba(X)[0, 1]
-    score = round(prob * 100)
+    score = int(round(prob * 100))
     return {
-        "transaction_id": row["transaction_id"],
-        "account_id": row["account_id"],
+        "transaction_id": int(row["transaction_id"]),
+        "account_id": int(row["account_id"]),
         "risk_score": score,
         "risk_level": risk_level(score),
         "actual_label": "FRAUD" if row["is_fraud"] == 1 else "NORMAL",

@@ -1,0 +1,12 @@
+{
+  "transactions": 100000,
+  "fraud_transactions": 9507,
+  "fraud_rate_pct": 9.51,
+  "fraud_clusters": 100,
+  "fraud_unique_devices": 300,
+  "fraud_unique_ips": 200,
+  "fraud_unique_payment_methods": 300,
+  "fraud_unique_accounts": 1497,
+  "normal_unique_devices": 5000,
+  "normal_unique_ips": 5000
+}

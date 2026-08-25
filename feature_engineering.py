@@ -1,14 +1,4 @@
-"""
-Feature engineering for the Razorpay AI Risk Manager (Track 02) baseline model.
 
-Key design decision (validated against the actual dataset before writing this):
-Raw "accounts per device/IP/payment method" counted over the WHOLE dataset is
-NOT discriminative here -- normal traffic shows more raw device reuse than
-fraud, because there are only 5,000 devices for 100,000 transactions.
-The signal only appears once you window it in time. This script builds
-TIME-WINDOWED shared-resource features (trailing 48h), which is what actually
-separates fraud from normal in this data.
-"""
 
 import pandas as pd
 import numpy as np

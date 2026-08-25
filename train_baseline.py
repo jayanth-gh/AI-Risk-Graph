@@ -1,12 +1,4 @@
-"""
-Baseline model training + evaluation for the Razorpay AI Risk Manager (Track 02).
 
-Trains on `train`, tunes the decision threshold on `val`, and reports final
-metrics on `test` exactly ONCE. Compares Random Forest vs XGBoost, and reports
-false-positive cost under stated synthetic assumptions.
-
-Run this after feature_engineering.py has produced features_with_split.csv.
-"""
 
 import pandas as pd
 import numpy as np

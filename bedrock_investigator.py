@@ -25,8 +25,8 @@ from botocore.exceptions import ClientError
 
 # Anthropic Claude Haiku via Bedrock -- cheap, fast, good for structured summarization.
 # Swap for "amazon.titan-text-express-v1" if Claude access isn't approved yet.
-MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0"
-REGION = "us-east-1"  # match wherever you enabled model access
+MODEL_ID = "eu.anthropic.claude-haiku-4-5-20251001-v1:0"  # EU inference profile (Stockholm)
+REGION = "eu-north-1"  # Stockholm -- match your Bedrock console region exactly
 
 
 def build_prompt(evidence: dict) -> str:
